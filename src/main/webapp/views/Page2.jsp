@@ -51,7 +51,7 @@
         <h1 class="titreListe">Liste des Inscrits</h1>
         
         <div class="buttonContainer">
-            <a href=""><button class="leftBtn">Nouvelle Inscription</button></a>
+            <a href="NvInscription.page2?codeStage=<%=s.getCode_stage() %>"><button class="leftBtn">Nouvelle Inscription</button></a>
             <a href="ListByDate.page1"><button class="rightBtn">Retour Liste Page</button></a>
         </div>
      </main>
