@@ -41,26 +41,28 @@
         List<Stage> sl = (List<Stage>)request.getAttribute("sl");
         for(Stage s : sl){
         %>
-        <div class="displayContainer">
-            <div class="idContainer">
-                <p class="id"><%=s.getCode_stage() %></p>
-            </div>
-            <div class="TypeStageDateContainer">
-                <p class="TypeStage"><%=s.getType_stage() %></p>
-            </div>
-            <div class="TypeStageDateContainer">
-                <p class="NbInscrit">Nombre Inscrit: <%=s.getNbInscrit_stage() %></p>
-            </div>
-            <div class="TypeStageDateContainer">
-                <p class="Date">DU:<%=s.getDebut_stage()%></p>
-            </div>
-            <div class="TypeStageDateContainer">
-                <p class="Date">AU:<%=s.getFin_stage()%></p>
-            </div>
-            <svg class="arrow"width="45 " height="23" viewBox="0 0 65 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M64.2374 14.2374C64.9209 13.554 64.9209 12.446 64.2374 11.7626L53.1005 0.625631C52.4171 -0.0577862 51.309 -0.0577862 50.6256 0.625631C49.9422 1.30905 49.9422 2.41709 50.6256 3.10051L60.5251 13L50.6256 22.8995C49.9422 23.5829 49.9422 24.691 50.6256 25.3744C51.309 26.0578 52.4171 26.0578 53.1005 25.3744L64.2374 14.2374ZM1.19054e-09 14.75L63 14.75L63 11.25L-1.19054e-09 11.25L1.19054e-09 14.75Z" fill="#087222"/>
-            </svg>      
-        </div>
+        <a href="Selection.page1?codeStage=<%=s.getCode_stage() %>">
+	        <div class="displayContainer">
+	            <div class="idContainer">
+	                <p class="id"><%=s.getCode_stage() %></p>
+	            </div>
+	            <div class="TypeStageDateContainer">
+	                <p class="TypeStage"><%=s.getType_stage() %></p>
+	            </div>
+	            <div class="TypeStageDateContainer">
+	                <p class="NbInscrit">Nombre Inscrit: <%=s.getNbInscrit_stage() %></p>
+	            </div>
+	            <div class="TypeStageDateContainer">
+	                <p class="Date">DU:<%=s.getDebut_stage()%></p>
+	            </div>
+	            <div class="TypeStageDateContainer">
+	                <p class="Date">AU:<%=s.getFin_stage()%></p>
+	            </div>
+	            <svg class="arrow"width="45 " height="23" viewBox="0 0 65 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+	                <path d="M64.2374 14.2374C64.9209 13.554 64.9209 12.446 64.2374 11.7626L53.1005 0.625631C52.4171 -0.0577862 51.309 -0.0577862 50.6256 0.625631C49.9422 1.30905 49.9422 2.41709 50.6256 3.10051L60.5251 13L50.6256 22.8995C49.9422 23.5829 49.9422 24.691 50.6256 25.3744C51.309 26.0578 52.4171 26.0578 53.1005 25.3744L64.2374 14.2374ZM1.19054e-09 14.75L63 14.75L63 11.25L-1.19054e-09 11.25L1.19054e-09 14.75Z" fill="#087222"/>
+	            </svg>      
+	        </div>
+	    </a>
         <%
         }
         %>

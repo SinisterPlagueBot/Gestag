@@ -21,13 +21,10 @@ public class Test {
 	public static void main(String[] args) {
 		
 		
-		//StageDao ds = new StageDaoImplOrcl(new OracleDataSource());
+		StageDao ds = new StageDaoImplOrcl(new OracleDataSource());
 		
 		
-		
-		StageBusiness sb = new StageManager();
-		
-		System.out.println(sb.getAllByDate());
+		System.out.println(ds.selectById(1));
 		
 		/*
 		UserDaoImplOrcl userMan =new UserDaoImplOrcl(db);

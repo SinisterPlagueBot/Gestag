@@ -38,6 +38,12 @@ public class Page1Servlet extends HttpServlet {
 			List<Stage> sl = sbusiness.getAllByType();
 			req.setAttribute("sl", sl);
 			req.getRequestDispatcher("views/Page1.jsp").forward(req, resp);
+		}else if(url.contains("Selection")) {
+			int codeStage = Integer.parseInt(req.getParameter("codeStage"));
+			System.out.println(codeStage);
+			Stage s = sbusiness.getById(codeStage);
+			req.setAttribute("s", s);
+			req.getRequestDispatcher("views/Page2.jsp").forward(req, resp);
 		}
 	}
 	

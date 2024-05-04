@@ -182,7 +182,7 @@ body {
     width: 800px;
 }
 
-.buttonContainer a {
+a {
     text-decoration: none; /* Remove underline from all anchor tags within .buttonContainer */
 	display:contents;
 }
