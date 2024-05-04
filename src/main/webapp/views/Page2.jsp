@@ -52,7 +52,7 @@
         
         <div class="buttonContainer">
             <a href=""><button class="leftBtn">Nouvelle Inscription</button></a>
-            <a href=""><button class="rightBtn">Retour Liste Page</button></a>
+            <a href="ListByDate.page1"><button class="rightBtn">Retour Liste Page</button></a>
         </div>
      </main>
 </body>
