@@ -67,7 +67,7 @@ public class StageDaoImplOrcl implements StageDao {
 	}
 
 	public List<Stage> selectAllByType() {
-        String query = "select * from STAGE order by TYPE_STAGE desc ";
+        String query = "select * from STAGE order by TYPE_STAGE asc ";
         List<Stage> stages = new ArrayList<>();
 
         try {

@@ -29,13 +29,15 @@ public class Page1Servlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURI();
-		System.out.println(url);
 		
 		if(url.contains("ByDate")) {
 			List<Stage> sl = sbusiness.getAllByDate();
-			System.out.println(sl);
 			req.setAttribute("sl", sl);
 			req.getRequestDispatcher("views/Page1.jsp").forward(req, resp);	
+		}else if(url.contains("ByType")) {
+			List<Stage> sl = sbusiness.getAllByType();
+			req.setAttribute("sl", sl);
+			req.getRequestDispatcher("views/Page1.jsp").forward(req, resp);
 		}
 	}
 	

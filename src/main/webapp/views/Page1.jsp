@@ -65,8 +65,8 @@
         }
         %>
         <div class="buttonContainer">
-            <button class="leftBtn">Lister par Date</button>
-            <button class="rightBtn">Lister par Stage</button>
+            <a href="ListByDate.page1"><button class="leftBtn">Lister par Date</button></a>
+            <a href="ListByType.page1"><button class="rightBtn">Lister par Stage</button></a>
         </div>
     </main>
 </body>

@@ -181,6 +181,10 @@ body {
     height: 50px;
     width: 800px;
 }
+
+.buttonContainer a {
+    text-decoration: none; /* Remove underline from all anchor tags within .buttonContainer */
+}
   
 .leftBtn{
     border: 2px solid #038323;
