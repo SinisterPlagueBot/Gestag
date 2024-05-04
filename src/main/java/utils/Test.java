@@ -5,6 +5,8 @@ import dao.OracleDataSource;
 import java.sql.SQLException;
 
 import beans.Stagiaire;
+import business.StageBusiness;
+import business.StageManager;
 import dao.DataSource;
 import dao.InscriptionDao;
 import dao.InscriptionDaoImplOrcl;
@@ -17,7 +19,17 @@ import dao.UserDaoImplOrcl;
 public class Test {
 
 	public static void main(String[] args) {
-		DataSource db=new OracleDataSource();
+		
+		
+		//StageDao ds = new StageDaoImplOrcl(new OracleDataSource());
+		
+		
+		
+		StageBusiness sb = new StageManager();
+		
+		System.out.println(sb.getAllByDate());
+		
+		/*
 		UserDaoImplOrcl userMan =new UserDaoImplOrcl(db);
 		//System.out.println(userMan.selectUser("mehdi", "mehdi"));
 		StageDao stageMan =new StageDaoImplOrcl( db);
@@ -31,6 +43,7 @@ public class Test {
 		System.out.println(stagiaireMan.selectAll());
 		InscriptionDao inscriptionMan = new InscriptionDaoImplOrcl(db);
 		System.out.println(inscriptionMan.selectInscriptionByCode("1"));
+		*/
 	}
 
 }
