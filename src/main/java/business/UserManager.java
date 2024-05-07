@@ -7,11 +7,9 @@ public class UserManager implements UserBusiness{
 	private UserDaoImplOrcl usr; 
 		
 	public UserManager() {
-		super();
 	}
 
 	public UserManager(UserDaoImplOrcl usr) {
-		super();
 		this.usr = usr;
 	}
 
