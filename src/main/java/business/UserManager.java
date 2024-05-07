@@ -14,7 +14,10 @@ public class UserManager implements UserBusiness{
 	}
 
 	public boolean determineExistant(User user) {
-		if(usr.selectUser(user.getUserName(), user.getPassword()).getUserName().equals(user.getUserName()) && usr.selectUser(user.getUserName(), user.getPassword()).getPassword().equals(user.getPassword())) {
+		if(usr.selectUser(user.getUserName(), user.getPassword()) == null) {
+			return false;
+		}
+		else if(usr.selectUser(user.getUserName(), user.getPassword()).getUserName().equals(user.getUserName()) && usr.selectUser(user.getUserName(), user.getPassword()).getPassword().equals(user.getPassword())) {
 			return true;
 		}
 		return false;
