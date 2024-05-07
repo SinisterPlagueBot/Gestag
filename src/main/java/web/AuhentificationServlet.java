@@ -2,6 +2,7 @@ package web;
 
 import java.io.IOException;
 
+import beans.User;
 import business.UserBusiness;
 import business.UserManager;
 import dao.OracleDataSource;
@@ -20,9 +21,13 @@ public class AuhentificationServlet extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest req,HttpServletResponse resp) throws ServletException,IOException{
-		String username;
-		String password;
-		if(business.determineExistant(user))
+		String username = req.getParameter("id");
+		String password=req.getParameter("mdp");
+		User user=new User(username,password);
+		if(business.determineExistant(user)) {
+			req.getRequestDispatcher("/views/Page1.jsp").forward(req, resp);
+		}
+		req.getRequestDispatcher("").forward(req, resp);
 	}
 	protected void doPost(HttpServletRequest req,HttpServletResponse resp) throws ServletException,IOException{
 		doGet(req, resp);
