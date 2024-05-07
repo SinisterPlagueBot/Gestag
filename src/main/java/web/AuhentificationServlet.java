@@ -27,7 +27,7 @@ public class AuhentificationServlet extends HttpServlet {
 		if(business.determineExistant(user)) {
 			req.getRequestDispatcher("/views/Page1.jsp").forward(req, resp);
 		}
-		req.getRequestDispatcher("").forward(req, resp);
+		req.getRequestDispatcher("/html/fail.html").forward(req, resp);
 	}
 	protected void doPost(HttpServletRequest req,HttpServletResponse resp) throws ServletException,IOException{
 		doGet(req, resp);
