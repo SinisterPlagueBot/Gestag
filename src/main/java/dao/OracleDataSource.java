@@ -18,9 +18,13 @@ public class OracleDataSource implements DataSource{
         String user = "c##mesos1";
         String password = "mehdi";
         */
+		/*
 		String url = "jdbc:oracle:thin:@localhost:1521:orcl"; // JDBC URL for Oracle
         String user = "C##SYNTAXERROR";
-        String password = "mohamed";
+        String password = "mohamed";*/
+		String url = "jdbc:oracle:thin:@localhost:1521:orcl"; // JDBC URL for Oracle
+        String user = "C##douaa";
+        String password = "douaa";
         try {
             // Load the Oracle JDBC driver
             Class.forName("oracle.jdbc.driver.OracleDriver");
