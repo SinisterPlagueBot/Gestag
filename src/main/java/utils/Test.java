@@ -5,6 +5,7 @@ import dao.OracleDataSource;
 import java.sql.SQLException;
 
 import beans.Stagiaire;
+import beans.User;
 import business.StageBusiness;
 import business.StageManager;
 import dao.DataSource;
@@ -21,10 +22,15 @@ public class Test {
 	public static void main(String[] args) {
 		
 		
-		StageDao ds = new StageDaoImplOrcl(new OracleDataSource());
 		
 		
-		System.out.println(ds.selectById(1));
+		UserDaoImplOrcl us = new UserDaoImplOrcl(new OracleDataSource());
+		
+		User u = us.selectUser("douaa", "douaa");
+		
+		
+		
+		System.out.println(u);
 		
 		/*
 		UserDaoImplOrcl userMan =new UserDaoImplOrcl(db);

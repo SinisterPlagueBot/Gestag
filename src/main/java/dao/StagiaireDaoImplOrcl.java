@@ -106,4 +106,35 @@ public class StagiaireDaoImplOrcl implements StagiaireDao{
 	    return stagiaires;
 	}
 
+	public List<Stagiaire> selectStagiaireByCodeStage(String code_stage) {
+		String query = "SELECT s.num_stagiaire,s.nom_stagiaire,s.diplo_stagiaire,s.sexe_stagiaire,s.dnaiss_stagiaire,s.prenom_stagiaire FROM STAGIAIRE s JOIN INSCRPITION ins on ins.num_stagiaire=s.num_stagiaire WHERE ins.code_stage =" + code_stage;
+    List<Stagiaire> stagiaires = new ArrayList<>();
+	    try {
+	        Statement st = cnx.createStatement();
+	        ResultSet rs = st.executeQuery(query);
+	        while (rs.next()) {
+	            // Print the contents of the ResultSet for debugging
+	           
+
+	            Stagiaire stagiaire = new Stagiaire(
+	                rs.getString(1),
+	                rs.getString(2),
+	                rs.getString(3),
+	                rs.getString(4),
+	                rs.getString(5),
+	                rs.getString(6)
+	            );
+	            stagiaires.add(stagiaire);
+	            
+	       
+	    }st.close();
+        rs.close();
+        cnx.commit();
+       } catch (SQLException e) {
+	        System.out.println("Error executing query: " + query);
+	        e.printStackTrace();
+	    }
+	    return stagiaires;
+	}
+
 	}

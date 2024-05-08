@@ -19,6 +19,39 @@ public class InscriptionDaoImplOrcl implements InscriptionDao {
 		this.cnx = ds.getConnection();
 	}
 
+	
+	//updated method 
+	
+	public void insertInscription(Inscription inscription) {
+        // Handle SQLException
+		try {
+			// the '0' is  a dummy value that will be updated in the db automatically ,
+			String query = "INSERT INTO INSCRPITION VALUES (?, ? ,?, TO_DATE(?, 'YYYY/MM/DD'), '0')";
+			PreparedStatement preparedStatement = cnx.prepareStatement(query);
+			
+			// Set values for parameters
+			preparedStatement.setString(1, inscription.getCode_stage());
+			preparedStatement.setString(2, inscription.getNum_stagiaire());
+			preparedStatement.setString(3, inscription.getCode_position());
+			preparedStatement.setString(4, inscription.getDate_inscription());       
+			
+			// Execute the PreparedStatement
+			preparedStatement.executeUpdate();
+			
+			// Commit the transaction
+			cnx.commit();
+			
+			// Close the PreparedStatement (optional, as it will be closed automatically when the method ends)
+			preparedStatement.close();
+		} catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+
+}
+	
+	
+	/*
+	//old method
 	@Override
 	public void insertInscription(Inscription inscription) {
 		 try {
@@ -46,6 +79,7 @@ public class InscriptionDaoImplOrcl implements InscriptionDao {
 		    }
 		
 	}
+	*/
 
 	@Override
 	public List<Inscription> selectInscriptionByCode(String codeInscription) {
@@ -78,5 +112,34 @@ public class InscriptionDaoImplOrcl implements InscriptionDao {
 	    return inscriptions;
 	
 	}
+	
+	public void updateInscription(Inscription inscription) {
+        // Handle SQLException
+		try {
+			// the '0' is  a dummy value that will be updated in the db automatically ,
+			String query = "UPDATE INSCRPITION SET   code_position=? , date_inscrip=? , status_inscrip=? WHERE code_stage=? AND num_stage=? ";
+			PreparedStatement preparedStatement = cnx.prepareStatement(query);
+			
+			// Set values for parameters
+			preparedStatement.setString(1, inscription.getCode_position());
+			preparedStatement.setString(2, inscription.getDate_inscription());    
+			preparedStatement.setString(3, inscription.getStatus_insc());    
+			preparedStatement.setString(4, inscription.getCode_stage());    
+			preparedStatement.setString(5, inscription.getNum_stagiaire());    
+			
+			
+			// Execute the PreparedStatement
+			preparedStatement.executeUpdate();
+			
+			// Commit the transaction
+			cnx.commit();
+			
+			// Close the PreparedStatement (optional, as it will be closed automatically when the method ends)
+			preparedStatement.close();
+		} catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+
+}
 
 }
