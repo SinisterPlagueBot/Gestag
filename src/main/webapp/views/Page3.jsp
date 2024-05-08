@@ -48,6 +48,12 @@
             <p class="labels">Au</p>
             <div class="Display"><%=s.getFin_stage() %></div>
         </div>
+        
+        <div class="buttonContainer">
+            <a href="Page4.jsp"><button class="leftBtn">Nouveau Stagiaire</button></a>
+            <a href=""><button class="middleBtn">Validation</button></a>
+            <a href="Selection.page1?codeStage=<%=s.getCode_stage() %>"><button class="rightBtn">Retour Stage</button></a>
+        </div>
      </main>
 
 </body>
