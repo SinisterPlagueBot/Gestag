@@ -1,5 +1,3 @@
-<%@page import="beans.Stagiaire"%>
-<%@page import="java.util.List"%>
 <%@page import="beans.Stage"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -8,43 +6,18 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Page3StyleSheet.css">
-    <title>Inscription Stage - Inscription</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Page4StyleSheet.css">
+    <title>Inscription Stage - Creation Stagiaire</title>
     <script>
-  function updateStudentInfo() {
-    var select = document.getElementById("selection");
-    var selectedOption = select.options[select.selectedIndex];
-
-    var nomInput = document.getElementById("Nom");
-    var prenomInput = document.getElementById("Prenom");
-
-    // Clear input fields if no option is selected
-    if (select.selectedIndex === 0) {
-      nomInput.value = "";
-      prenomInput.value = "";
-      return;
+    // Function to redirect to NvInscription.page2 with codeStage parameter
+    function redirectToNvInscription(codeStage) {
+        window.location.href = "NvInscription.page2?codeStage=" + codeStage;
     }
 
-    // Set Nom and Prenom inputs with selected option's values
-    nomInput.value = selectedOption.value;
-    prenomInput.value = selectedOption.getAttribute("prenom");
-  }
-
-  // Call the function on initial page load
-  window.onload = updateStudentInfo;
-
-  // Call the function whenever the selection changes
-  var select = document.getElementById("selection");
-  select.addEventListener("change", updateStudentInfo);
-  
-  function redirectToCrStagiaire(codeStage) {
-      window.location.href = "creationStagiaire.page3?codeStage=" + codeStage;
-  }
-
-  // Function to redirect to ListByDate.page1
-  function redirectToStage(codeStage) {
-      window.location.href = "Selection.page1?codeStage=" + codeStage;
-  }
+    // Function to redirect to ListByDate.page1
+    function redirectToListByDate() {
+        window.location.href = "ListByDate.page1";
+    }
 </script>
 </head>
 <body>
@@ -73,60 +46,49 @@
         <rect x="93" y="40" width="165" height="13" rx="6.5" fill="#0D912E"/>
         <rect x="362" y="40" width="165" height="13" rx="6.5" fill="#EFF0F7"/>
         <rect x="361" y="40" width="166" height="13" rx="6.5" fill="#0D912E"/>
-        <rect x="631" y="40" width="25" height="13" rx="6.5" fill="#0D912E"/>
-        </svg>
+        <rect x="631" y="40" width="75" height="13" rx="6.5" fill="#0D912E"/>
+      </svg>
         
-        <%
-        Stage s = (Stage)request.getAttribute("s");
-        List<Stagiaire> lstagiaire = (List<Stagiaire>)request.getAttribute("lstagiaire");
-        %>
+      <%
+      Stage s = (Stage)request.getAttribute("s");
+      %>
         
-        <div class="displayStageInfoContainer">
-            <p class="labels">Stage</p>
-            <div class="Display"><%=s.getType_stage() %></div>
-            <p class="labels">Du</p>
-            <div class="Display"><%=s.getDebut_stage() %></div>
-            <p class="labels">Au</p>
-            <div class="Display"><%=s.getFin_stage() %></div>
+      <h1 class="title">Création Stagiaire</h1>
+
+      <form action="create.page4" method="get">
+      <input type="hidden" name="codeStage" value="<%=s.getCode_stage() %>">
+        <div class="labelsInputContainer">
+          <label class="labels" for="Nom">Nom</label>
+          <input class="inputs" type="text" id="Nom" name="Nom" placeholder="Nom" required>
         </div>
-        
-        <form action="updateInscription.page3" method="get">
-          <div class="labelsInputContainer">
-            <label class="labels" for="selection">Selection Stagiaire</label>
-            <select id="selection" onclick="updateStudentInfo()">
-            	<option value=""></option>
-            <%
-            for(Stagiaire st : lstagiaire){
-            %>
-              <option value=<%=st.getNom() %> Prenom=<%=st.getPrenom() %> ><%=st.getNom() %> <%=st.getPrenom() %></option>
-            <%
-            }
-            %>
-            </select>
-          </div>
-          <input type="hidden" name="codeStage" value="<%=s.getCode_stage() %>">
-          <div class="labelsInputContainer">
-            <label class="labels" for="Nom">Nom</label>
-            <input class="inputs" type="text" id="Nom" name="Nom" required>
-          </div>
-          <div class="labelsInputContainer">
-            <label class="labels" for="Prenom">Prenom</label>
-            <input class="inputs" type="text" id="Prenom" name="Prenom" required>
-          </div>
-          <div class="labelsInputContainer">
-            <label class="labels" for="status">Status</label>
-            <select id="status" name="Status">
-              <option value="CIF">CIF</option>
-              <option value="SIFE">SIFE</option>
-              <option value="Ch.Force">Ch.Force</option>
-            </select>
-          </div>
-          <div class="buttonContainer">
-            <input type="button" class="leftBtn" value="Nouveau Stagiaire" onclick="redirectToCrStagiaire('<%=s.getCode_stage() %>')">
-            <input type="submit" value="Validation" class="middleBtn">
-            <input type="button" class="rightBtn" value="Retour Stage" onclick="redirectionToStage('<%=s.getCode_stage() %>')">
-           </div>
-        </form>
-     </main>
+        <div class="labelsInputContainer">
+          <label class="labels" for="Prenom">Prenom</label>
+          <input class="inputs" type="text" id="Prenom" name="Prenom" placeholder="Prenom" required>
+        </div>
+        <div class="labelsInputContainer">
+          <label class="labels" for="Date_de_Naissance">Date de Naissance</label>
+          <input class="inputs" type="text" id="Date_de_Naissance" name="DateDeNaissance" placeholder="YYYY-MM-DD" pattern="[0-9]{4}-{0-9}{2}-{0-9}{2}" required>
+        </div>
+        <div class="labelsInputContainer">
+          <label class="labels" for="Diplome">Diplome</label>
+          <input class="inputs" type="text" id="Diplome" name="Diplome" placeholder="Diplome" required>
+        </div>
+        <div class="labelsInputContainer">
+          <label class="labels" for="Sexe">Sexe</label>
+          <select  id="Sexe" name="Sexe">
+            <option value="Femme">Femme</option>
+            <option value="Homme">Homme</option>
+          </select>
+        </div>
+        <div class="buttonContainer">
+            <!-- Use input type="button" with onclick event for leftBtn -->
+            <input type="button" class="leftBtn" value="Retour Inscription" onclick="redirectToNvInscription('<%=s.getCode_stage() %>')">
+            <!-- Use input type="submit" for middleBtn -->
+            <input type="submit" class="middleBtn" value="Creation">
+            <!-- Use input type="button" with onclick event for rightBtn -->
+            <input type="button" class="rightBtn" value="Retour Debut" onclick="redirectToListByDate()">
+        </div>
+      </form>
+    </main>    
 </body>
 </html>

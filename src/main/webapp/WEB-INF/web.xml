@@ -19,6 +19,24 @@
     <url-pattern>*.page2</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>page3</servlet-name>
+  	<servlet-class>web.Page3Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>page3</servlet-name>
+    <url-pattern>*.page3</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>page4</servlet-name>
+  	<servlet-class>web.Page4Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>page4</servlet-name>
+    <url-pattern>*.page4</url-pattern>
+  </servlet-mapping>
+  
     <servlet>
   	<servlet-name>Authentification</servlet-name>
   	<servlet-class>web.AuhentificationServlet</servlet-class>

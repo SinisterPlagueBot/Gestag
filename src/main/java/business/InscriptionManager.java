@@ -32,4 +32,15 @@ public class InscriptionManager implements InscriptionBusiness{
 		return insD.selectInscriptionByCode(codeInscription);
 	}
 
+	
+	public void modifyInscription(Inscription inscription) {
+		insD.updateInscription(inscription);
+		
+	}
+
+	
+	public void removeInscription(String codeStage, String numStagiaire) {
+		insD.deleteInscription(codeStage, numStagiaire);
+	}
+
 }

@@ -44,9 +44,9 @@ public class StagiaireDaoImplOrcl implements StagiaireDao{
 	
 
 	@Override
-	public Stagiaire selectByName(String name) {
-		String query = "SELECT * FROM STAGIAIRE WHERE NOM_STAGIAIRE =" + name;
-	    Stagiaire stagiaire = null;
+	public Stagiaire selectByName(String name,String prenom) {
+		String query = "SELECT * FROM STAGIAIRE WHERE NOM_STAGIAIRE = '" + name + "' and PRENOM_STAGIAIRE= '"+prenom+"'";
+		Stagiaire stagiaire = null;
 	    try {
 	        Statement st = cnx.createStatement();
 	        ResultSet rs = st.executeQuery(query);
@@ -76,7 +76,7 @@ public class StagiaireDaoImplOrcl implements StagiaireDao{
 
 	@Override
 	public List<Stagiaire> selectAll() {
-		String query = "SELECT * FROM STAGIAIRE ";
+		String query = "SELECT * FROM STAGIAIRE ORDER BY CAST(num_stagiaire AS int) ASC";
 	    List<Stagiaire> stagiaires =new ArrayList<>();
 	    try {
 	        Statement st = cnx.createStatement();
@@ -107,7 +107,7 @@ public class StagiaireDaoImplOrcl implements StagiaireDao{
 	}
 
 	public List<Stagiaire> selectStagiaireByCodeStage(String code_stage) {
-		String query = "SELECT s.num_stagiaire,s.nom_stagiaire,s.diplo_stagiaire,s.sexe_stagiaire,s.dnaiss_stagiaire,s.prenom_stagiaire FROM STAGIAIRE s JOIN INSCRPITION ins on ins.num_stagiaire=s.num_stagiaire WHERE ins.code_stage =" + code_stage;
+		String query = "SELECT s.num_stagiaire,s.nom_stagiaire,s.prenom_stagiaire,s.sexe_stagiaire,s.dnaiss_stagiaire,s.diplo_stagiaire FROM STAGIAIRE s JOIN INSCRIPTION ins on ins.num_stagiaire=s.num_stagiaire WHERE ins.code_stage =" + code_stage+" order by cast(s.num_stagiaire AS int ) asc ";
     List<Stagiaire> stagiaires = new ArrayList<>();
 	    try {
 	        Statement st = cnx.createStatement();

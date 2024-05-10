@@ -1,3 +1,5 @@
+<%@page import="beans.Stagiaire"%>
+<%@page import="java.util.List"%>
 <%@page import="beans.Stage"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -38,6 +40,8 @@
         </svg>
         <%
         Stage s = (Stage)request.getAttribute("s"); 
+        List<Stagiaire> lstagiaire = (List<Stagiaire>)request.getAttribute("lstagiaire");
+        int j = 1 ;
         %>
         <div class="displayStageInfoContainer">
             <p class="labels">Stage</p>
@@ -49,6 +53,42 @@
         </div>
             
         <h1 class="titreListe">Liste des Inscrits</h1>
+        
+        <table class="ListInscritTable">
+          <thead>
+            <tr>
+              <th class="col1">N°</th>
+              <th class="col2">Nom</th>
+              <th class="col3">Prénom</th>
+            </tr>
+          </thead>
+          <tbody>
+          <%
+       		for(int i=0 ; i<lstagiaire.size();i++){
+       			if(i < lstagiaire.size()-1){
+       	  %>
+          	<tr>
+              <td class="col1"><%=j++ %></td>
+              <td class="col2"><%=lstagiaire.get(i).getNom() %></td>
+              <td class="col3"><%=lstagiaire.get(i).getPrenom() %></td>
+            </tr>
+          <%
+       			}else{
+          %>
+          	<tr>
+              <td ><%=j++ %></td>
+              <td ><%=lstagiaire.get(i).getNom() %></td>
+              <td ><%=lstagiaire.get(i).getPrenom() %></td>
+            </tr>
+          <%
+       			}
+       		}
+          %>
+          </tbody>
+        </table>
+        
+       	
+       	
         
         <div class="buttonContainer">
             <a href="NvInscription.page2?codeStage=<%=s.getCode_stage() %>"><button class="leftBtn">Nouvelle Inscription</button></a>

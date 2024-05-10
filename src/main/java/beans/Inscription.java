@@ -25,6 +25,17 @@ public class Inscription {
 		this.code_position = "0";
 	}
 	
+	public Inscription(String code_stage, String num_stagiaire) {
+		super();
+		this.code_stage = code_stage;
+		this.num_stagiaire = num_stagiaire;
+		this.date_inscription = "a";
+		this.status_insc = "V";
+		this.code_position = "0";
+	}
+	
+	
+	
 	public String getCode_stage() {
 		return code_stage;
 	}

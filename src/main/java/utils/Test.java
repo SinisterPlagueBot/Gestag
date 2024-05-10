@@ -2,8 +2,10 @@ package utils;
 
 import dao.OracleDataSource;
 
+import java.lang.reflect.Type;
 import java.sql.SQLException;
 
+import beans.Inscription;
 import beans.Stagiaire;
 import beans.User;
 import business.StageBusiness;
@@ -20,33 +22,20 @@ import dao.UserDaoImplOrcl;
 public class Test {
 
 	public static void main(String[] args) {
-		
-		
-		
-		
-		UserDaoImplOrcl us = new UserDaoImplOrcl(new OracleDataSource());
-		
-		User u = us.selectUser("douaa", "douaa");
-		
-		
-		
-		System.out.println(u);
-		
 		/*
-		UserDaoImplOrcl userMan =new UserDaoImplOrcl(db);
-		//System.out.println(userMan.selectUser("mehdi", "mehdi"));
-		StageDao stageMan =new StageDaoImplOrcl( db);
-		StageDaoImplOrcl stageMan2 =new StageDaoImplOrcl( db);
-	//System.out.println(stageMan.selectById(2));
-	//System.out.println(stageMan.selectAllByDate());
-	//System.out.println(stageMan.selectAllByType());
-		StagiaireDao stagiaireMan =new StagiaireDaoImplOrcl(db);
-		Stagiaire stagiaire = new Stagiaire("07","mehdi","kasmi","M","04/04/03","bac");
-		//stagiaireMan.insert(stagiaire);
-		System.out.println(stagiaireMan.selectAll());
-		InscriptionDao inscriptionMan = new InscriptionDaoImplOrcl(db);
-		System.out.println(inscriptionMan.selectInscriptionByCode("1"));
+		
+		StagiaireDao st = new StagiaireDaoImplOrcl(new OracleDataSource());
+		String numStagiaire = st.selectAll().getLast().getNum_stagiaire();
+		String numericPart = numStagiaire.replaceAll("[^\\d]", ""); // Keep only digits
+		Integer n = Integer.parseInt(numericPart);
+		n = n+1;
+		System.out.println(n);
 		*/
+		
+		InscriptionDao i = new InscriptionDaoImplOrcl(new OracleDataSource());
+		i.insertInscription(new Inscription("1", "3", "a", "a","a"));
+		
+		
 	}
 
 }
