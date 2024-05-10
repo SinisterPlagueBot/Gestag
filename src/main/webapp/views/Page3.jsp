@@ -42,7 +42,7 @@
   }
 
   // Function to redirect to ListByDate.page1
-  function redirectToStage(codeStage) {
+  function redirectionToStage(codeStage) {
       window.location.href = "Selection.page1?codeStage=" + codeStage;
   }
 </script>
